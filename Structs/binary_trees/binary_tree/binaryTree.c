@@ -77,7 +77,7 @@ binaryTree *binaryTree_delete(binaryTree *node, int elem) {
             free(trash);
         }
         else {
-            binaryTree *aux = node;
+            binaryTree *aux = node->right;
             while (aux->left) aux = aux->left;
             node->data = aux->data;
             aux->data = elem;
