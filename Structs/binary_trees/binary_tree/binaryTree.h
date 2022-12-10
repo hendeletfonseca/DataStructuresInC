@@ -17,3 +17,4 @@ void binaryTree_print_ident(binaryTree *node);
 void binaryTree_free(binaryTree *node);
 
 binaryTree *binaryTree_search(binaryTree *node, int elem);
+binaryTree *binaryTree_delete(binaryTree *node, int elem);

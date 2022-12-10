@@ -60,3 +60,29 @@ binaryTree *binaryTree_search(binaryTree *node, int elem){
     if (answer) return answer;
     return(binaryTree_search(node->right, elem));
 }
+
+binaryTree *binaryTree_delete(binaryTree *node, int elem) {
+    if (!node) return NULL;
+    if (node->left) node->left = binaryTree_delete(node->left, elem);
+    if (node->right) node->right = binaryTree_delete(node->right, elem);
+    if (node->data == elem) {
+        if ((!node->left) && (!node->right)) { // leaf
+            free(node);
+            node = NULL;
+        }
+        else if ((!node->left) || (!node->right)) { // only 1 son
+            binaryTree *trash = node;
+            if (node->left) node = node->left;
+            else node = node->right;
+            free(trash);
+        }
+        else {
+            binaryTree *aux = node;
+            while (aux->left) aux = aux->left;
+            node->data = aux->data;
+            aux->data = elem;
+            node->left = binaryTree_delete(node->left, elem);
+        }
+    }
+    return node;
+}
