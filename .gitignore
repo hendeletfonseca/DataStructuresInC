@@ -51,5 +51,6 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+# ----------------- My Editions ----------------------------------------------------------------
 # VSCODE Files
 /.vscode
